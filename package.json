@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/abuzaforfagun/express-with-mssql/issues"
   },
-  "homepage": "https://github.com/abuzaforfagun/express-with-mssql#readme"
+  "homepage": "https://github.com/abuzaforfagun/express-with-mssql#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
