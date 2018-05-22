@@ -78,32 +78,27 @@ app.get("/api/customers/:id", (req, res) => {
     })
 
 });
-app.post("/api/customers/:id", (req, res) => {
+app.post("/api/customers", (req, res) => {
     (async function () {
         try {
             
             let result1 = await pool.request()
-                .query(`select * from customer where id = ${req.params.id}`);
-                
-            console.log(result1)
-            res.send(result1.recordset);
+                .query(`INSERT INTO 
+                        customer (name, email, phone, address) 
+                        VALUES ('${req.body.name}', '${req.body.email}', '${req.body.phone}', '${req.body.address}'); select SCOPE_IDENTITY() as id;`);
+            let customer = req.body;
+            customer.id = JSON.stringify(result1.recordset[0].id);
+            
+            res.send(customer);
         
-            // Stored procedure
-            
-            // let result2 = await pool.request()
-            //     .input('input_parameter', sql.Int, value)
-            //     .output('output_parameter', sql.VarChar(50))
-            //     .execute('procedure_name')
-            
-            // console.dir(result2)
         } catch (err) {
-            console.log(err);
+            
             res.sendStatus(400);
         }
     })()
      
     sql.on('error', err => {
-        console.log(err);
+        
         res.sendStatus(400);
     })
 
