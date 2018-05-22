@@ -56,7 +56,7 @@ app.get("/api/customers/:id", (req, res) => {
                 .query(`select * from customer where id = ${req.params.id}`);
                 
             console.log(result)
-            res.send(result.recordset);
+            res.send(result);
         
         } catch (err) {
             res.sendStatus(400);
@@ -80,6 +80,28 @@ app.post("/api/customers", (req, res) => {
             customer.id = JSON.stringify(result.recordset[0].id);
             
             res.send(customer);
+        
+        } catch (err) {
+            
+            res.sendStatus(400);
+        }
+    })()
+     
+    sql.on('error', err => {
+        
+        res.sendStatus(400);
+    })
+
+});
+
+app.delete("/api/customers/:id", (req, res) => {
+    (async function () {
+        try {
+            
+            let result = await pool.request()
+                .query(`DELETE from Customer WHERE id = ${req.params.id}`);
+            
+            res.sendStatus(200);
         
         } catch (err) {
             
