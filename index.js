@@ -2,6 +2,10 @@ var express = require("express");
 let app = express();
 const sql = require('mssql')
 let config = require('./const');
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 
 app.use(express.json());
 let pool = "";
@@ -45,6 +49,36 @@ app.get("/api/customers", (req, res) => {
 
 });
 app.get("/api/customers/:id", (req, res) => {
+    (async function () {
+        try {
+            
+            let result1 = await pool.request()
+                .query(`select * from customer where id = ${req.params.id}`);
+                
+            console.log(result1)
+            res.send(result1.recordset);
+        
+            // Stored procedure
+            
+            // let result2 = await pool.request()
+            //     .input('input_parameter', sql.Int, value)
+            //     .output('output_parameter', sql.VarChar(50))
+            //     .execute('procedure_name')
+            
+            // console.dir(result2)
+        } catch (err) {
+            console.log(err);
+            res.sendStatus(400);
+        }
+    })()
+     
+    sql.on('error', err => {
+        console.log(err);
+        res.sendStatus(400);
+    })
+
+});
+app.post("/api/customers/:id", (req, res) => {
     (async function () {
         try {
             

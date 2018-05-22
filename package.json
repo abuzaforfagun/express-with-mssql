@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/abuzaforfagun/express-with-mssql#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "mssql": "^4.1.0"
   }
