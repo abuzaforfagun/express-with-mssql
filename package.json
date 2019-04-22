@@ -1,25 +1,80 @@
 {
-  "name": "express-with-mssql",
-  "version": "1.0.0",
-  "description": "CRUD api in express with mssql",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/abuzaforfagun/express-with-mssql.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/abuzaforfagun/express-with-mssql/issues"
-  },
-  "homepage": "https://github.com/abuzaforfagun/express-with-mssql#readme",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "mssql": "^4.1.0"
-  }
+	"name": "express-with-mssql",
+	"version": "1.0.0",
+	"description": "CRUD api in express with mssql",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"pretest": "eslint --ignore-path .gitignore ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/abuzaforfagun/express-with-mssql.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/abuzaforfagun/express-with-mssql/issues"
+	},
+	"homepage": "https://github.com/abuzaforfagun/express-with-mssql#readme",
+	"dependencies": {
+		"body-parser": "^1.18.3",
+		"express": "^4.16.3",
+		"mssql": "^4.1.0",
+		"prettier": "^1.17.0"
+	},
+	"devDependencies": {
+		"eslint": "^5.16.0",
+		"eslint-config-airbnb-base": "^13.1.0",
+		"eslint-config-strongloop": "^2.1.0",
+		"eslint-plugin-import": "^2.17.2"
+	},
+	"eslintConfig": {
+		"globals": {
+			"pool": "writable",
+			"res": "Response"
+		},
+		"extends": "airbnb-base",
+		"env": {
+			"node": true,
+			"es6": true,
+			"browser": true
+		},
+		"rules": {
+			"brace-style": [
+				"error",
+				"stroustrup"
+			],
+			"comma-dangle": [
+				"error",
+				"never"
+			],
+			"no-unused-vars": [
+				"warn"
+			],
+			"no-var": [
+				"off"
+			],
+			"one-var": [
+				"off"
+			],
+			"linebreak-style": [
+				"error",
+				"windows"
+			],
+			"indent": [
+				"error",
+				4
+			],
+			"wrap-iife": [
+				"error",
+				"inside"
+			],
+			"padded-blocks": [
+				"error",
+				"never"
+			]
+		}
+	}
 }
