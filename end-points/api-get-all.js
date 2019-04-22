@@ -7,7 +7,7 @@ app.get('/api/customers', (req, res) => {
             const result = await sqlServer.request()
                 .query('select * from customer');
 
-            res.send(result.recordsets);
+            res.send(result.recordsets[0]);
         }
         catch (err) {
             res.sendStatus(400);
