@@ -1,0 +1,232 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Sample spec",
+        "description": "Sample spec for Swagger",
+        "termsOfService": "http://swagger.io/terms/"
+    },
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Customers",
+            "description": "API for CRUD Customer"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/customers": {
+            "get": {
+                "tags": [
+                    "Get all Customer"
+                ],
+                "description": "Returns all customers list",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "response",
+                        "schema": {
+                            "$ref": "#/definitions/get-all-response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Create"
+                ],
+                "description": "Create new customer",
+                "operationId": "for the URL",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "description": "Name of the customer",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/create-request/properties/name"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "body",
+                        "description": "Email of the customer",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/create-request/properties/email"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "body",
+                        "description": "Phone number of the customer",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/create-request/properties/phone"
+                        }
+                    },
+                    {
+                        "name": "address",
+                        "in": "body",
+                        "description": "Customer address",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/create-request/properties/address"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Customer added",
+                        "schema": {
+                            "$ref": "#/definitions/create-response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/customers/{customerId}": {
+            "get": {
+                "tags": [
+                    "Get one Customer details"
+                ],
+                "description": "Returns single customer details",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "response",
+                        "schema": {
+                            "$ref": "#/definitions/create-response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Delete Customer"
+                ],
+                "description": "Delete customer",
+                "operationId": "delete",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Customer ID to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "delete response",
+                        "schema": {
+                            "$ref": "#/definitions/delete"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "create-request": {
+            "properties": {
+                "name": {
+                    "required": true,
+                    "type": "string",
+                    "example": "fagun"
+                },
+                "email": {
+                    "required": true,
+                    "type": "string",
+                    "example": "mdabuzaforfagun@gmail.com"
+                },
+                "phone": {
+                    "required": true,
+                    "type": "string",
+                    "example": "01677813190"
+                },
+                "address": {
+                    "required": true,
+                    "type": "string",
+                    "example": "Dhaka, Bangladesh"
+                }
+            }
+        },
+        "create-response": {
+            "properties": {
+                "id": {
+                    "required": true,
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1
+                },
+                "name": {
+                    "required": true,
+                    "type": "string",
+                    "example": "fagun"
+                },
+                "email": {
+                    "required": true,
+                    "type": "string",
+                    "example": "mdabuzaforfagun@gmail.com"
+                },
+                "phone": {
+                    "required": true,
+                    "type": "string",
+                    "example": "01677813190"
+                },
+                "address": {
+                    "required": true,
+                    "type": "string",
+                    "example": "Dhaka, Bangladesh"
+                }
+            }
+        },
+        "get-all-response": {
+            "schemas": "ArrayOfInt",
+            "type": "array",
+            "example": [
+                {
+                    "id": "1",
+                    "name": "Customer 1",
+                    "email": "c1@email.com",
+                    "address": "Dhaka, Bangladesh"
+                },
+                {
+                    "id": "2",
+                    "name": "Customer 2",
+                    "email": "c2@email.com",
+                    "address": "Dhaka, Bangladesh"
+                }
+            ]
+        },
+        "400error": {
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "example": "400 Bad Request"
+                }
+            }
+        }
+    }
+}
