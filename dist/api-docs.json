@@ -99,7 +99,7 @@
                 }
             }
         },
-        "/api/customers/{customerId}": {
+        "/api/customers/{id}": {
             "get": {
                 "tags": [
                     "Get one Customer details"
@@ -108,7 +108,15 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Customer ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "response",
