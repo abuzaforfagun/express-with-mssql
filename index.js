@@ -1,8 +1,8 @@
 let app = require('./init-express');
 let config = require('./const');
 const sql = require('mssql')
-app.listen(8000, async ()=>{
-    
+app.listen(8000, async () => {
+
     try {
         pool = await sql.connect(config);
         console.log("I am ready to do operation!");
