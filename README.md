@@ -11,9 +11,11 @@ CRUD api in express with mssql
 4. localhost:8000/api/customers/1 (DELETE)
 5. localhost:8000/api/customers (POST)
 * Request Body:
-```{
+```
+{
     "name": "customer 20",
     "email": "customer20@email.com",
     "phone": "01677813190",
     "address": "Dhaka, Bangladesh"
-}```
+}
+```
