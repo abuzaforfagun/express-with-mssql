@@ -13,10 +13,10 @@ app.listen(8000, async () => {
     }
 });
 
-require('./api-get-all');
-require('./api-get-one');
-require('./api-post-one');
-require('./api-delete-one');
+require('./end-points/api-get-all');
+require('./end-points/api-get-one');
+require('./end-points/api-post-one');
+require('./end-points/api-delete-one');
 
 sql.on('error', (err) => {
     res.statusMessage = `Unable to connect SQL Server. Error Details: ${err}`;
