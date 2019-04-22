@@ -4,7 +4,7 @@ app.get('/api/customers/:id', (req, res) => {
     // eslint-disable-next-line func-names
     (async function () {
         try {
-            const result = await pool.request()
+            const result = await sqlServer.request()
                 .query(`select * from customer where id = ${req.params.id}`);
             if (result.rowsAffected > 0) {
                 res.send(result.recordset);

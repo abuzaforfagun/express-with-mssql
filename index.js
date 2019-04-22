@@ -5,7 +5,7 @@ const config = require('./const');
 
 app.listen(8000, async () => {
     try {
-        pool = await sql.connect(config);
+        sqlServer = await sql.connect(config);
     }
     catch (err) {
         // eslint-disable-next-line no-console

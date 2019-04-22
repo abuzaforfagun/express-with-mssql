@@ -35,7 +35,8 @@
 	"eslintConfig": {
 		"globals": {
 			"pool": "writable",
-			"res": "Response"
+			"res": "Response",
+			"sqlServer": "writeable"
 		},
 		"extends": "airbnb-base",
 		"env": {
