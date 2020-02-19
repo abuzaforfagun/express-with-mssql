@@ -3,7 +3,7 @@ CRUD api in express with mssql
 
 # Instruction to run
 1. npm i
-2. node index.js
+2. npm start
 # API End points
 1. localhost:8000 (SWAGGER)
 2. localhost:8000/api/customers (GET)
