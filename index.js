@@ -13,6 +13,10 @@ app.listen(8000, async () => {
         console.log('Failed to listen 8000...', err);
     }
 });
+app.use((req, res, next) => {
+    console.log(`Middleware tiggered: ${req.url}`);
+    next();
+});
 
 require('./end-points/api-get-all');
 require('./end-points/api-get-one');
