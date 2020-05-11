@@ -1,9 +1,9 @@
 const sql = require('mssql/msnodesqlv8');
-const app = require('./init-express');
+const { app, port } = require('./init-express');
 const config = require('./const');
 
 
-app.listen(8000, async () => {
+app.listen(port, async () => {
     try {
         const conn = new sql.ConnectionPool(config);
         sqlServer = await conn.connect();

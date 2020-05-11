@@ -1,4 +1,4 @@
-const app = require('../init-express');
+const { app } = require('../init-express');
 
 app.get('/api/customers', (req, res) => {
     // eslint-disable-next-line func-names
