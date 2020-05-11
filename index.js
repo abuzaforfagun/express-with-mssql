@@ -2,7 +2,6 @@ const sql = require('mssql/msnodesqlv8');
 const { app, port } = require('./init-express');
 const config = require('./const');
 
-
 app.listen(port, async () => {
     try {
         const conn = new sql.ConnectionPool(config);
@@ -14,7 +13,7 @@ app.listen(port, async () => {
     }
 });
 app.use((req, res, next) => {
-    console.log(`Middleware tiggered: ${req.url}`);
+    process.stdout.write(`Middleware tiggered: ${req.url}\n`);
     next();
 });
 
