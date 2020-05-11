@@ -1,15 +1,16 @@
-const sql = require('mssql');
+const sql = require('mssql/msnodesqlv8');
 const app = require('./init-express');
 const config = require('./const');
 
 
 app.listen(8000, async () => {
     try {
-        sqlServer = await sql.connect(config);
+        const conn = new sql.ConnectionPool(config);
+        sqlServer = await conn.connect();
     }
     catch (err) {
         // eslint-disable-next-line no-console
-        console.log('Failed to listen 8000...');
+        console.log('Failed to listen 8000...', err);
     }
 });
 
