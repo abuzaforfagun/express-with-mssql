@@ -1,8 +1,7 @@
 const { app } = require('../init-express');
 
 app.delete('/api/customers/:id', (req, res) => {
-    // eslint-disable-next-line func-names
-    (async function () {
+    (async () => {
         try {
             await sqlServer.request()
                 .query(`DELETE from Customer WHERE id = ${req.params.id}`);

@@ -1,8 +1,7 @@
 const { app } = require('../init-express');
 
 app.get('/api/customers', (req, res) => {
-    // eslint-disable-next-line func-names
-    (async function () {
+    (async () => {
         try {
             const result = await sqlServer.request()
                 .query('select * from customer');
